@@ -18,7 +18,50 @@ class BooksCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    private function getFieldsData($show = FALSE) {
+        return [
+            [
+                'name' => 'title',
+                'label' => 'Title',
+                'type' => 'text',
+            ],
+            [
+                'label' => "Book Image",
+                'name' => "image",
+                'type' => 'image',
+                'crop' => true, // set to true to allow cropping, false to disable
+                'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            ],
+            [
+                'name' => 'isbn',
+                'label' => 'Isbn',
+                'type' => 'number',
+            ],
+            [
+                'name' => 'author',
+                'label' => 'Author',
+                'type' => 'text',
+            ],
+           
+            
+            [
+                'name' => 'price',
+                'label' => 'Price',
+                'type' => 'text',
+            ],
+            [
+                'name' => 'description',
+                'label' => 'Description',
+                'type' => 'text',
+            ], [
+                'name' => 'category',
+                'label' => 'category',
+                'type' => 'text',
+            ],
 
+
+        ];
+    }
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      * 
@@ -29,6 +72,7 @@ class BooksCrudController extends CrudController
         CRUD::setModel(\App\Models\Books::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/books');
         CRUD::setEntityNameStrings('books', 'books');
+        $this->crud->addFields($this->getFieldsData());
     }
 
     /**
@@ -44,8 +88,11 @@ class BooksCrudController extends CrudController
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
+         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
+         *  
          */
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
 
     /**

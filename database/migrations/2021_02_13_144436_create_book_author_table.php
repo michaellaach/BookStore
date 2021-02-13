@@ -16,7 +16,7 @@ class CreateBookAuthorTable extends Migration
             $table->bigIncrements('id');
             $table->integer('book_id')->unsigned();
             $table->integer('author_id')->unsigned();
-            $table->timestamps();
+          
         });
     }
 
