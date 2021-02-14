@@ -50,7 +50,7 @@ class AuthorsRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required' => 'Please provide valid author name which is between 5 and 255 characters.',
         ];
     }
 }
