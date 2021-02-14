@@ -26,7 +26,12 @@ class BooksRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+             'title' => 'required|min:5|max:255',
+             'ibsn' => 'required',
+             'author' => 'required|min:5|max:255',
+             'price' => 'required',
+             'category' => 'required|min:3|max:255'
+
         ];
     }
 
@@ -50,7 +55,11 @@ class BooksRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'title.required' => 'Please provide valid name which is between 5 and 255 characters.',
+            'isbn.required' => 'Please provide valid name isbn number.',
+            'author.required'=>'Please provide valid author name which is between 5 and 255 characters.',
+            'price.required'=>'Please provide valid price.',
+            'category.required'=>'Please provide valid category name which is between 5 and 255 characters.'
         ];
     }
 }
