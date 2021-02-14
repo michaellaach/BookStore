@@ -20,8 +20,8 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->text('description');
             $table->decimal('price', 5, 2);
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('category');
+           
             
             $table->timestamps();
         });

@@ -27,7 +27,7 @@ class BooksCrudController extends CrudController
             ],
             [
                 'label' => "Book Image",
-                'name' => "image",
+                'name' => "picture",
                 'type' => 'image',
                 'crop' => true, // set to true to allow cropping, false to disable
                 'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
@@ -53,11 +53,13 @@ class BooksCrudController extends CrudController
                 'name' => 'description',
                 'label' => 'Description',
                 'type' => 'text',
-            ], [
+            ], 
+            
+            [
                 'name' => 'category',
-                'label' => 'category',
+                'label' => 'Category',
                 'type' => 'text',
-            ],
+            ], 
 
 
         ];
@@ -83,14 +85,7 @@ class BooksCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        CRUD::setFromDb(); // columns
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         *  
-         */
+       
         $this->crud->set('show.setFromDb', false);
         $this->crud->addColumns($this->getFieldsData(TRUE));
     }
@@ -123,5 +118,13 @@ class BooksCrudController extends CrudController
     protected function setupUpdateOperation()
     {
         $this->setupCreateOperation();
+    }
+    protected function setupShowOperation()
+    {
+        // by default the Show operation will try to show all columns in the db table,
+        // but we can easily take over, and have full control of what columns are shown,
+        // by changing this config for the Show operation
+        $this->crud->set('show.setFromDb', false);
+        $this->crud->addColumns($this->getFieldsData(TRUE));
     }
 }

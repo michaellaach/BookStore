@@ -24,11 +24,11 @@ class AuthorsRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            // 'name' => 'required|min:5|max:255'
-        ];
-    }
+{
+    return [
+        'name' => 'required|min:5|max:255',
+    ];
+}
 
     /**
      * Get the validation attributes that apply to the request.
