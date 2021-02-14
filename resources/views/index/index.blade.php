@@ -16,7 +16,7 @@
 							<h2>Gemina</h2>
 						</header>
                         <ul style="float: left; width:70%;">
-                            <li><b>Тitle</b>: Tesla </li>
+                            <li><b>Тitle</b>: Gemina </li>
                             <li><b>Author</b>:  Amie Kaufman, Jay Kristoff </li>
                             <li><b>Price</b>: 15€ </li>
                             <li><b>Isbn</b>: 9780553499162</li>
